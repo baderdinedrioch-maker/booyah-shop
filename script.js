@@ -1,215 +1,79 @@
-// ============================================
-// 🔥 BOOYAH SHOP - JavaScript
-// ============================================
+// ==========================================
+// BOOYAH SHOP - JAVASCRIPT ONLY
+// ==========================================
+
+// معلومات التواصل
+const whatsappNumber = "212656310403";
+const instagramUsername = "boouh_hop";
+
+// ==========================================
+// المنتجات
+// ==========================================
 
 const products = [
-    { name: "100 جوهرة", price: 10, icon: "💎" },
-    { name: "310 جوهرة", price: 25, icon: "💎" },
-    { name: "520 جوهرة", price: 40, icon: "💎" },
-    { name: "1060 جوهرة", price: 75, icon: "💎" },
-    { name: "Booyah Pass", price: 20, icon: "🎟️" },
-    { name: "باقة المستوى 1", price: 5, icon: "🏆" },
-    { name: "باقة المستوى 2", price: 7, icon: "🏆" },
-    { name: "باقة المستوى 3", price: 9, icon: "🏆" },
-    { name: "باقة المستوى 4", price: 11, icon: "🏆" },
-    { name: "باقة المستوى 5", price: 13, icon: "🏆" }
+    {
+        name: "100 جوهرة",
+        price: 10,
+        icon: "💎"
+    },
+    {
+        name: "310 جوهرة",
+        price: 25,
+        icon: "💎"
+    },
+    {
+        name: "520 جوهرة",
+        price: 40,
+        icon: "💎"
+    },
+    {
+        name: "1060 جوهرة",
+        price: 75,
+        icon: "💎"
+    },
+    {
+        name: "Booyah Pass",
+        price: 20,
+        icon: "🎟️"
+    },
+    {
+        name: "Level Pack 1",
+        price: 5,
+        icon: "🏆"
+    },
+    {
+        name: "Level Pack 2",
+        price: 7,
+        icon: "🏆"
+    },
+    {
+        name: "Level Pack 3",
+        price: 9,
+        icon: "🏆"
+    },
+    {
+        name: "Level Pack 4",
+        price: 11,
+        icon: "🏆"
+    },
+    {
+        name: "Level Pack 5",
+        price: 13,
+        icon: "🏆"
+    }
 ];
-
-
-// رقم WhatsApp الخاص بالمتجر
-const whatsappNumber = "212656310403";
-
 
 // السلة
 let cart = [];
 
 
-// ============================================
-// إنشاء المنتجات
-// ============================================
-
-document.body.innerHTML = `
-
-<div class="shop">
-
-    <header>
-        <h1>🔥 Booyah Shop</h1>
-        <p>متجر فري فاير</p>
-
-        <button onclick="openCart()">
-            🛒 السلة
-            <span id="cartCount">0</span>
-        </button>
-    </header>
-
-
-    <main>
-
-        <div class="hero">
-            <h2>متجر Booyah Shop</h2>
-
-            <p>
-                💎 جواهر فري فاير
-                <br>
-                🎟️ Booyah Pass
-                <br>
-                🏆 باقات المستوى
-            </p>
-        </div>
-
-
-        <h2 class="title">
-            🛍️ المنتجات
-        </h2>
-
-
-        <div
-            id="products"
-            class="products">
-        </div>
-
-    </main>
-
-
-    <!-- السلة -->
-
-    <div
-        id="cartWindow"
-        class="window">
-
-        <div class="cart">
-
-            <button
-                class="close"
-                onclick="closeCart()">
-
-                ✕
-
-            </button>
-
-            <h2>🛒 سلة المشتريات</h2>
-
-            <div id="cartItems"></div>
-
-            <div class="total">
-                المجموع:
-                <span id="total">0</span> DH
-            </div>
-
-            <button
-                class="whatsapp"
-                onclick="checkout()">
-
-                💬 إرسال الطلب إلى WhatsApp
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- معلومات الزبون -->
-
-    <div
-        id="checkoutWindow"
-        class="window">
-
-        <div class="cart">
-
-            <button
-                class="close"
-                onclick="closeCheckout()">
-
-                ✕
-
-            </button>
-
-            <h2>📦 معلومات الطلب</h2>
-
-            <label>الاسم</label>
-
-            <input
-                id="customerName"
-                placeholder="اكتب اسمك">
-
-
-            <label>رقم الهاتف</label>
-
-            <input
-                id="customerPhone"
-                placeholder="06XXXXXXXX">
-
-
-            <label>Free Fire ID</label>
-
-            <input
-                id="freeFireID"
-                placeholder="اكتب Free Fire ID">
-
-
-            <label>طريقة الدفع</label>
-
-            <select id="payment">
-
-                <option value="">
-                    اختر طريقة الدفع
-                </option>
-
-                <option value="الدفع نقداً">
-                    💵 الدفع نقداً
-                </option>
-
-                <option value="تحويل بنكي">
-                    🏦 تحويل بنكي
-                </option>
-
-            </select>
-
-
-            <button
-                class="whatsapp"
-                onclick="sendOrder()">
-
-                📲 إرسال الطلب إلى WhatsApp
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <footer>
-
-        <h2>Booyah Shop</h2>
-
-        <p>
-            🔥 متجر فري فاير
-        </p>
-
-        <p>
-            WhatsApp: +212 656-310403
-        </p>
-
-        <p>
-            Instagram: @boouh_hop
-        </p>
-
-    </footer>
-
-</div>
-`;
-
-
-// ============================================
-// التصميم
-// ============================================
+// ==========================================
+// CSS
+// ==========================================
 
 const style = document.createElement("style");
 
-style.innerHTML = `
-
+style.textContent = `
 * {
     box-sizing: border-box;
 }
@@ -217,379 +81,719 @@ style.innerHTML = `
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f3f8ff;
-    color: #172033;
+    background: #f4f8ff;
+    color: #111827;
 }
 
-header {
-    background: white;
-    padding: 18px;
-    text-align: center;
-    box-shadow: 0 2px 12px #ddd;
-}
-
-header h1 {
-    color: #006eff;
-    margin: 0;
-}
-
-header p {
-    color: #777;
-}
-
-header button {
-    background: #006eff;
-    color: white;
-    border: 0;
-    padding: 12px 22px;
-    border-radius: 10px;
+button {
+    font-family: Arial, sans-serif;
     cursor: pointer;
-    font-size: 16px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
-#cartCount {
-    background: white;
-    color: #006eff;
-    padding: 3px 7px;
-    border-radius: 50%;
-    margin-right: 5px;
+.header {
+    background: linear-gradient(135deg, #0066ff, #00aaff);
+    color: white;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.15);
 }
 
-main {
-    width: 90%;
+.header-content {
     max-width: 1100px;
     margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    background: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.cart-button {
+    background: white;
+    color: #0066ff;
+    border: none;
+    padding: 11px 16px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 .hero {
-    margin: 30px 0;
-    padding: 55px 20px;
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 35px 20px;
     text-align: center;
-    color: white;
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #006eff,
-            #35a5ff
-        );
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.07);
 }
 
-.hero h2 {
-    font-size: 40px;
+.hero h1 {
+    color: #0066ff;
+    margin: 0 0 10px;
+    font-size: 34px;
 }
 
 .hero p {
-    line-height: 2;
-    font-size: 18px;
-}
-
-.title {
-    text-align: center;
-    margin: 35px;
+    color: #555;
+    font-size: 17px;
+    margin: 8px 0;
 }
 
 .products {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 0 15px 30px;
+
     display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(210px, 1fr)
-        );
-
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
 }
 
-.product {
+.product-card {
     background: white;
-    padding: 25px;
-    text-align: center;
     border-radius: 18px;
-
-    box-shadow:
-        0 5px 20px
-        rgba(0,0,0,.08);
+    padding: 20px 15px;
+    text-align: center;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+    border: 1px solid #e6efff;
+    transition: transform 0.2s;
 }
 
-.icon {
-    font-size: 50px;
+.product-card:hover {
+    transform: translateY(-4px);
 }
 
-.product h3 {
+.product-icon {
+    width: 75px;
+    height: 75px;
+    margin: auto;
+    background: #eaf3ff;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 40px;
+}
+
+.product-card h3 {
+    margin: 14px 0 8px;
     font-size: 18px;
 }
 
 .price {
-    color: #006eff;
-    font-size: 22px;
+    color: #0066ff;
+    font-size: 21px;
     font-weight: bold;
-    margin: 15px;
+    margin-bottom: 15px;
 }
 
-.add {
+.add-button {
     width: 100%;
-    padding: 12px;
-
-    border: 0;
-    border-radius: 10px;
-
-    background: #006eff;
+    border: none;
+    background: #0066ff;
     color: white;
-
-    cursor: pointer;
-
+    padding: 13px;
+    border-radius: 12px;
     font-size: 15px;
     font-weight: bold;
 }
 
-.add:hover {
-    background: #0055c9;
+.add-button:active {
+    transform: scale(0.97);
+    background: #0052cc;
 }
 
-.window {
+.footer {
+    text-align: center;
+    background: #061b3a;
+    color: white;
+    padding: 30px 15px;
+    margin-top: 30px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.social-button {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.whatsapp-button {
+    background: #25D366;
+    color: white;
+}
+
+.instagram-button {
+    background: #e1306c;
+    color: white;
+}
+
+
+/* ============================= */
+/* النوافذ */
+/* ============================= */
+
+.modal {
     display: none;
-
     position: fixed;
-
     inset: 0;
-
-    background:
-        rgba(0,0,0,.6);
-
+    background: rgba(0,0,0,0.65);
     z-index: 1000;
+    padding: 15px;
 
     align-items: center;
     justify-content: center;
+}
 
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 20px;
     padding: 20px;
 }
 
-.cart {
-    position: relative;
-
-    background: white;
-
-    width: 100%;
-    max-width: 550px;
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    padding: 30px;
-
-    border-radius: 20px;
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.close {
-    position: absolute;
+.modal-header h2 {
+    margin: 0;
+    color: #0066ff;
+}
 
-    left: 15px;
-    top: 15px;
-
-    border: 0;
-
+.close-button {
+    border: none;
     background: #eee;
-
-    padding: 8px 12px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 20px;
 }
 
 .cart-item {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 10px;
+    padding: 13px 0;
+    border-bottom: 1px solid #eee;
+}
 
-    padding: 15px 0;
+.cart-item-info {
+    flex: 1;
+}
 
-    border-bottom: 1px solid #ddd;
+.cart-item-name {
+    font-weight: bold;
+}
+
+.cart-item-price {
+    color: #0066ff;
+    margin-top: 5px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 7px;
 }
 
 .quantity button {
-    border: 0;
-
-    background: #e7f1ff;
-
-    color: #006eff;
-
-    padding: 7px 12px;
-
-    border-radius: 7px;
-
-    cursor: pointer;
+    border: none;
+    background: #eaf3ff;
+    color: #0066ff;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.delete {
-    border: 0;
-
-    background: #ffe0e0;
-
-    color: red;
-
-    padding: 7px;
-
-    border-radius: 7px;
-
-    cursor: pointer;
+.delete-button {
+    border: none;
+    background: #ffecec;
+    color: #e60000;
+    padding: 8px;
+    border-radius: 8px;
 }
 
 .total {
-    font-size: 22px;
-
+    font-size: 21px;
     font-weight: bold;
-
-    color: #006eff;
-
-    padding: 20px 0;
+    color: #0066ff;
+    text-align: right;
+    margin: 20px 0;
 }
 
-.whatsapp {
+.checkout-button {
     width: 100%;
-
-    padding: 14px;
-
-    border: 0;
-
-    border-radius: 10px;
-
-    background: #25D366;
-
+    border: none;
+    background: #0066ff;
     color: white;
-
+    padding: 15px;
+    border-radius: 12px;
     font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-label {
-    display: block;
-
-    margin-top: 15px;
-
-    margin-bottom: 6px;
-
     font-weight: bold;
 }
 
-input,
-select {
-    width: 100%;
-
-    padding: 13px;
-
-    border: 1px solid #ddd;
-
-    border-radius: 9px;
-
-    font-size: 15px;
-}
-
-footer {
-    margin-top: 70px;
-
-    padding: 40px;
-
+.empty {
     text-align: center;
+    color: #777;
+    padding: 30px 10px;
+}
 
-    background: #111827;
 
+/* ============================= */
+/* نموذج الطلب */
+/* ============================= */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccd9ed;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #0066ff;
+}
+
+.info-box {
+    background: #eef6ff;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 15px;
+    color: #164477;
+    font-size: 14px;
+}
+
+.send-button {
+    width: 100%;
+    border: none;
+    background: #25D366;
     color: white;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
-footer h2 {
-    color: #3fa1ff;
-}
 
-@media(max-width:600px) {
+/* ============================= */
+/* الهاتف */
+/* ============================= */
+
+@media (max-width: 800px) {
 
     .products {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 0 10px 25px;
     }
 
-    .product {
-        padding: 15px;
+    .product-card {
+        padding: 15px 10px;
     }
 
-    .hero h2 {
-        font-size: 28px;
+    .product-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 34px;
     }
 
+    .product-card h3 {
+        font-size: 16px;
+    }
+
+    .price {
+        font-size: 19px;
+    }
+
+    .hero {
+        margin: 15px 10px;
+        padding: 25px 15px;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .logo-text {
+        font-size: 19px;
+    }
+
+    .logo-icon {
+        width: 43px;
+        height: 43px;
+    }
 }
 
+@media (max-width: 430px) {
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cart-button {
+        padding: 9px 11px;
+        font-size: 13px;
+    }
+
+    .header {
+        padding: 10px;
+    }
+
+    .product-card {
+        border-radius: 14px;
+    }
+
+    .add-button {
+        padding: 11px 5px;
+        font-size: 13px;
+    }
+}
 `;
 
 document.head.appendChild(style);
 
 
-// ============================================
+// ==========================================
+// HTML
+// ==========================================
+
+document.body.innerHTML = `
+
+<header class="header">
+
+    <div class="header-content">
+
+        <div class="logo-area">
+
+            <div class="logo-icon">
+                🔥
+            </div>
+
+            <div class="logo-text">
+                Booyah Shop
+            </div>
+
+        </div>
+
+        <button class="cart-button" id="openCartButton">
+            🛒 السلة (<span id="cartCount">0</span>)
+        </button>
+
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>🔥 Booyah Shop</h1>
+
+    <p>
+        متجر Free Fire الخاص بك
+    </p>
+
+    <p>
+        اختر المنتج وأضفه إلى السلة ثم أرسل طلبك
+    </p>
+
+</section>
+
+
+<div id="products" class="products"></div>
+
+
+<footer class="footer">
+
+    <h2>Booyah Shop</h2>
+
+    <p>
+        للطلب والاستفسار تواصل معنا
+    </p>
+
+    <div class="social-buttons">
+
+        <button class="social-button whatsapp-button" id="whatsappButton">
+            🟢 واتساب
+        </button>
+
+        <button class="social-button instagram-button" id="instagramButton">
+            📸 إنستغرام
+        </button>
+
+    </div>
+
+    <p style="margin-top:20px;">
+        © 2026 Booyah Shop
+    </p>
+
+</footer>
+
+
+<!-- السلة -->
+
+<div class="modal" id="cartWindow">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>🛒 سلة المشتريات</h2>
+
+            <button class="close-button" id="closeCart">
+                ×
+            </button>
+
+        </div>
+
+        <div id="cartItems"></div>
+
+        <div class="total">
+            المجموع: <span id="total">0</span> DH
+        </div>
+
+        <button class="checkout-button" id="checkoutButton">
+            متابعة الطلب
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- صفحة معلومات الطلب -->
+
+<div class="modal" id="checkoutWindow">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>📦 معلومات الطلب</h2>
+
+            <button class="close-button" id="closeCheckout">
+                ×
+            </button>
+
+        </div>
+
+        <div class="info-box">
+
+            بعد الضغط على إرسال الطلب سيتم فتح واتساب
+            لإرسال تفاصيل طلبك.
+
+            <br><br>
+
+            لا ترسل كلمة سر حساب Free Fire
+            أو رمز التحقق.
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                الاسم
+            </label>
+
+            <input
+                id="customerName"
+                type="text"
+                placeholder="اكتب اسمك"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                رقم الهاتف
+            </label>
+
+            <input
+                id="customerPhone"
+                type="tel"
+                placeholder="مثال: 06xxxxxxxx"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Free Fire ID
+            </label>
+
+            <input
+                id="freeFireID"
+                type="text"
+                placeholder="اكتب ID الخاص بك"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                طريقة التواصل
+            </label>
+
+            <select id="contactMethod">
+
+                <option value="whatsapp">
+                    🟢 واتساب
+                </option>
+
+                <option value="instagram">
+                    📸 إنستغرام
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button class="send-button" id="sendOrderButton">
+            🟢 إرسال الطلب
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+
+// ==========================================
 // عرض المنتجات
-// ============================================
+// ==========================================
 
 function displayProducts() {
 
-    const container =
-        document.getElementById("products");
+    const container = document.getElementById("products");
 
     container.innerHTML = "";
 
     products.forEach((product, index) => {
 
-        container.innerHTML += `
+        const card = document.createElement("div");
 
-            <div class="product">
+        card.className = "product-card";
 
-                <div class="icon">
-                    ${product.icon}
-                </div>
+        card.innerHTML = `
 
-                <h3>
-                    ${product.name}
-                </h3>
-
-                <div class="price">
-                    ${product.price} DH
-                </div>
-
-                <button
-                    class="add"
-                    onclick="addToCart(${index})">
-
-                    🛒 أضف إلى السلة
-
-                </button>
-
+            <div class="product-icon">
+                ${product.icon}
             </div>
+
+            <h3>
+                ${product.name}
+            </h3>
+
+            <div class="price">
+                ${product.price} DH
+            </div>
+
+            <button class="add-button">
+                🛒 أضف إلى السلة
+            </button>
 
         `;
 
+        const button = card.querySelector(".add-button");
+
+        // مهم للهاتف والكمبيوتر
+        button.addEventListener("click", function () {
+
+            addToCart(index);
+
+        });
+
+        container.appendChild(card);
+
     });
+
 }
 
 
-// ============================================
+// ==========================================
 // إضافة إلى السلة
-// ============================================
+// ==========================================
 
 function addToCart(index) {
 
     const product = products[index];
 
-    const existing =
-        cart.find(
-            item => item.name === product.name
-        );
+    const existing = cart.find(
+        item => item.name === product.name
+    );
 
     if (existing) {
 
@@ -600,11 +804,8 @@ function addToCart(index) {
         cart.push({
 
             name: product.name,
-
             price: product.price,
-
             icon: product.icon,
-
             quantity: 1
 
         });
@@ -613,87 +814,59 @@ function addToCart(index) {
 
     updateCart();
 
+    // فتح السلة مباشرة بعد الإضافة
     openCart();
+
 }
 
 
-// ============================================
-// تحديث عدد المنتجات
-// ============================================
+// ==========================================
+// تحديث السلة
+// ==========================================
 
 function updateCart() {
 
-    let count = 0;
+    const count = cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
 
-    cart.forEach(item => {
-
-        count += item.quantity;
-
-    });
-
-    document.getElementById(
-        "cartCount"
-    ).textContent = count;
-}
-
-
-// ============================================
-// فتح السلة
-// ============================================
-
-function openCart() {
-
-    const windowBox =
-        document.getElementById(
-            "cartWindow"
-        );
-
-    windowBox.style.display = "flex";
+    document.getElementById("cartCount").textContent = count;
 
     renderCart();
+
 }
 
 
-// ============================================
-// إغلاق السلة
-// ============================================
-
-function closeCart() {
-
-    document.getElementById(
-        "cartWindow"
-    ).style.display = "none";
-}
-
-
-// ============================================
-// عرض محتويات السلة
-// ============================================
+// ==========================================
+// عرض السلة
+// ==========================================
 
 function renderCart() {
 
     const container =
-        document.getElementById(
-            "cartItems"
-        );
+        document.getElementById("cartItems");
 
-    let total = 0;
-
-    container.innerHTML = "";
-
+    const totalElement =
+        document.getElementById("total");
 
     if (cart.length === 0) {
 
-        container.innerHTML =
-            "<p>🛒 السلة فارغة</p>";
+        container.innerHTML = `
+            <div class="empty">
+                🛒 السلة فارغة
+            </div>
+        `;
 
-        document.getElementById(
-            "total"
-        ).textContent = "0";
+        totalElement.textContent = "0";
 
         return;
+
     }
 
+    container.innerHTML = "";
+
+    let total = 0;
 
     cart.forEach((item, index) => {
 
@@ -702,85 +875,90 @@ function renderCart() {
 
         total += itemTotal;
 
+        const row =
+            document.createElement("div");
 
-        container.innerHTML += `
+        row.className = "cart-item";
 
-            <div class="cart-item">
+        row.innerHTML = `
 
-                <div>
+            <div class="cart-item-info">
 
-                    ${item.icon}
-                    <strong>
-                        ${item.name}
-                    </strong>
-
-                    <br>
-
-                    ${itemTotal} DH
-
+                <div class="cart-item-name">
+                    ${item.icon} ${item.name}
                 </div>
 
+                <div class="cart-item-price">
+                    ${item.price} DH × ${item.quantity}
+                </div>
 
-                <div class="quantity">
-
-                    <button
-                        onclick="changeQuantity(
-                            ${index},
-                            1
-                        )">
-
-                        +
-
-                    </button>
+            </div>
 
 
+            <div class="quantity">
+
+                <button class="minus">
+                    −
+                </button>
+
+                <strong>
                     ${item.quantity}
+                </strong>
 
-
-                    <button
-                        onclick="changeQuantity(
-                            ${index},
-                            -1
-                        )">
-
-                        -
-
-                    </button>
-
-                </div>
-
-
-                <button
-                    class="delete"
-                    onclick="removeProduct(
-                        ${index}
-                    )">
-
-                    🗑️
-
+                <button class="plus">
+                    +
                 </button>
 
             </div>
 
+
+            <button class="delete-button">
+                🗑️
+            </button>
+
         `;
+
+
+        row.querySelector(".minus")
+            .addEventListener("click", () => {
+
+                changeQuantity(index, -1);
+
+            });
+
+
+        row.querySelector(".plus")
+            .addEventListener("click", () => {
+
+                changeQuantity(index, 1);
+
+            });
+
+
+        row.querySelector(".delete-button")
+            .addEventListener("click", () => {
+
+                removeItem(index);
+
+            });
+
+
+        container.appendChild(row);
 
     });
 
+    totalElement.textContent = total;
 
-    document.getElementById(
-        "total"
-    ).textContent = total;
 }
 
 
-// ============================================
+// ==========================================
 // تغيير الكمية
-// ============================================
+// ==========================================
 
 function changeQuantity(index, amount) {
 
     cart[index].quantity += amount;
-
 
     if (cart[index].quantity <= 0) {
 
@@ -788,30 +966,55 @@ function changeQuantity(index, amount) {
 
     }
 
-
     updateCart();
 
-    renderCart();
 }
 
 
-// ============================================
-// حذف المنتج
-// ============================================
+// ==========================================
+// حذف منتج
+// ==========================================
 
-function removeProduct(index) {
+function removeItem(index) {
 
     cart.splice(index, 1);
 
     updateCart();
 
-    renderCart();
 }
 
 
-// ============================================
-// الانتقال إلى معلومات الطلب
-// ============================================
+// ==========================================
+// فتح السلة
+// ==========================================
+
+function openCart() {
+
+    renderCart();
+
+    document
+        .getElementById("cartWindow")
+        .classList.add("show");
+
+}
+
+
+// ==========================================
+// إغلاق السلة
+// ==========================================
+
+function closeCart() {
+
+    document
+        .getElementById("cartWindow")
+        .classList.remove("show");
+
+}
+
+
+// ==========================================
+// فتح نموذج الطلب
+// ==========================================
 
 function checkout() {
 
@@ -820,67 +1023,85 @@ function checkout() {
         alert("السلة فارغة!");
 
         return;
+
     }
 
     closeCart();
 
-    document.getElementById(
-        "checkoutWindow"
-    ).style.display = "flex";
+    document
+        .getElementById("checkoutWindow")
+        .classList.add("show");
+
 }
 
 
-// ============================================
-// إغلاق معلومات الطلب
-// ============================================
+// ==========================================
+// إغلاق نموذج الطلب
+// ==========================================
 
 function closeCheckout() {
 
-    document.getElementById(
-        "checkoutWindow"
-    ).style.display = "none";
+    document
+        .getElementById("checkoutWindow")
+        .classList.remove("show");
+
 }
 
 
-// ============================================
-// إرسال الطلب إلى WhatsApp
-// ============================================
+// ==========================================
+// إرسال الطلب
+// ==========================================
 
 function sendOrder() {
 
     const name =
-        document.getElementById(
-            "customerName"
-        ).value.trim();
+        document
+            .getElementById("customerName")
+            .value
+            .trim();
 
     const phone =
-        document.getElementById(
-            "customerPhone"
-        ).value.trim();
+        document
+            .getElementById("customerPhone")
+            .value
+            .trim();
 
     const freeFireID =
-        document.getElementById(
-            "freeFireID"
-        ).value.trim();
+        document
+            .getElementById("freeFireID")
+            .value
+            .trim();
 
-    const payment =
-        document.getElementById(
-            "payment"
-        ).value;
+    const contact =
+        document
+            .getElementById("contactMethod")
+            .value;
 
 
-    if (
-        !name ||
-        !phone ||
-        !freeFireID ||
-        !payment
-    ) {
+    if (!name) {
 
-        alert(
-            "⚠️ يرجى ملء جميع المعلومات"
-        );
+        alert("اكتب اسمك أولاً");
 
         return;
+
+    }
+
+
+    if (!phone) {
+
+        alert("اكتب رقم الهاتف");
+
+        return;
+
+    }
+
+
+    if (!freeFireID) {
+
+        alert("اكتب Free Fire ID");
+
+        return;
+
     }
 
 
@@ -904,60 +1125,118 @@ function sendOrder() {
 
     const orderNumber =
         "BS-" +
-        Math.floor(
-            100000 +
-            Math.random() * 900000
-        );
+        Date.now().toString().slice(-6);
 
 
     const message =
 
 `🔥 طلب جديد - Booyah Shop
 
-📦 رقم الطلب:
-${orderNumber}
+رقم الطلب: ${orderNumber}
 
 👤 الاسم:
 ${name}
 
-📱 رقم الهاتف:
+📱 الهاتف:
 ${phone}
 
 🎮 Free Fire ID:
 ${freeFireID}
 
-💳 طريقة الدفع:
-${payment}
-
-🛍️ المنتجات:
-
+🛒 المنتجات:
 ${productsText}
-
 💰 المجموع:
 ${total} DH
 
-شكراً لطلبك من Booyah Shop ❤️`;
+📞 طريقة التواصل:
+${contact === "whatsapp" ? "واتساب" : "إنستغرام"}
+
+⚠️ لا توجد كلمة سر أو رمز تحقق ضمن الطلب.`;
 
 
-    const whatsappURL =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        encodeURIComponent(message);
+    if (contact === "whatsapp") {
+
+        const whatsappURL =
+            "https://wa.me/" +
+            whatsappNumber +
+            "?text=" +
+            encodeURIComponent(message);
 
 
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
+        // فتح واتساب
+        window.location.href = whatsappURL;
+
+    } else {
+
+        // فتح إنستغرام
+        window.location.href =
+            "https://www.instagram.com/" +
+            instagramUsername +
+            "/";
+
+    }
+
 }
 
 
-// ============================================
+// ==========================================
+// الأزرار
+// ==========================================
+
+document
+    .getElementById("openCartButton")
+    .addEventListener("click", openCart);
+
+
+document
+    .getElementById("closeCart")
+    .addEventListener("click", closeCart);
+
+
+document
+    .getElementById("checkoutButton")
+    .addEventListener("click", checkout);
+
+
+document
+    .getElementById("closeCheckout")
+    .addEventListener("click", closeCheckout);
+
+
+document
+    .getElementById("sendOrderButton")
+    .addEventListener("click", sendOrder);
+
+
+// واتساب في أسفل الموقع
+document
+    .getElementById("whatsappButton")
+    .addEventListener("click", function () {
+
+        window.location.href =
+            "https://wa.me/" +
+            whatsappNumber;
+
+    });
+
+
+// إنستغرام في أسفل الموقع
+document
+    .getElementById("instagramButton")
+    .addEventListener("click", function () {
+
+        window.location.href =
+            "https://www.instagram.com/" +
+            instagramUsername +
+            "/";
+
+    });
+
+
+// ==========================================
 // تشغيل المتجر
-// ============================================
+// ==========================================
 
 displayProducts();
 
 updateCart();
-     
